@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 export interface MyTodo {
   completed: boolean;
@@ -95,7 +95,7 @@ export class App {
     })
   }
 
-  protected selectToDo(id: number) {
+  protected selectToDo(id: number): void {
     this.selectedTodo = this.myTodoList.find(item => item.id === id);
     if (this.selectedTodo) {
       this.deleteTodoForm.patchValue(this.selectedTodo);
@@ -103,23 +103,19 @@ export class App {
     }
   }
 
-  private areObjectsEqualAlphabetically(obj1:any, obj2: any): boolean {
+  private areObjectsEqualAlphabetically(obj1: any, obj2: any): boolean {
     const keys1: string[] = Object.keys(obj1).sort();
     const keys2: string[] = Object.keys(obj2).sort();
-
     if (keys1.length !== keys2.length) {
       return false;
     }
-
     for (let i: number = 0; i < keys1.length; i++) {
       const key: string = keys1[i];
       if (key !== keys2[i]) { // Ensure keys are in the same order and are identical
         return false;
       }
-
       const val1: any = obj1[key];
       const val2: any = obj2[key];
-
       // Handle nested objects recursively
       if (typeof val1 === 'object' && val1 !== null && typeof val2 === 'object' && val2 !== null) {
         if (!this.areObjectsEqualAlphabetically(val1, val2)) {
@@ -140,7 +136,7 @@ export class App {
     })
   }
 
-  private isDifferent() {
+  private isDifferent(): boolean {
     const newTodo: MyTodo = <MyTodo>this.changeTodoForm.value;
     const oldTodo: MyTodo | undefined = this.myTodoList.find(item => item.id === newTodo.id);
     let isDifferent: boolean = false;
@@ -150,8 +146,9 @@ export class App {
     return isDifferent;
   }
 
-  private subscribeToFormChanges() {
+  private subscribeToFormChanges(): void {
     this.changeTodoForm.valueChanges.subscribe(() => {
+      // check if the form is different from the existing item
       this.isChangeDisabled = !this.isDifferent() || this.changeTodoForm.invalid;
       this.changeDetectorRef.detectChanges();
     })

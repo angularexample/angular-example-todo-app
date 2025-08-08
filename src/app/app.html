@@ -3,15 +3,15 @@
   <h2>My ToDo List</h2>
   <table>
     <tr>
-      <th>User Id</th>
       <th>Id</th>
+      <th>User Id</th>
       <th>Title</th>
       <th>Completed</th>
     </tr>
     @for (myToDo of myTodoList; track myToDo) {
       <tr (click)="selectToDo(myToDo.id)">
-        <td>{{ myToDo.userId }}</td>
         <td>{{ myToDo.id }}</td>
+        <td>{{ myToDo.userId }}</td>
         <td>{{ myToDo.title }}</td>
         <td>{{ myToDo.completed }}</td>
       </tr>
@@ -44,11 +44,12 @@
 
 <section>
   <h2>Delete a Todo</h2>
+  <p>To select a ToDo item, click on the list.</p>
   <form [formGroup]="deleteTodoForm" (ngSubmit)=deleteTodo() class="my-add-todo-form">
     <table>
       <tr>
         <label for="delete-id">Id</label>
-        <input id="delete-id" formControlName="id" placeholder="Id" type="number">
+        <input id="delete-id" formControlName="id" placeholder="Id" type="text" readonly>
       </tr>
       <tr>
         <input type="submit" value="Delete" [disabled]="deleteTodoForm.invalid">
@@ -64,7 +65,7 @@
     <table>
       <tr>
         <label for="change-id">Id</label>
-        <input id="change-id" formControlName="id" placeholder="Id" readonly type="number">
+        <input id="change-id" formControlName="id" placeholder="Id" type="text" readonly>
       </tr>
       <tr>
         <label for="change-user-id">User Id</label>
