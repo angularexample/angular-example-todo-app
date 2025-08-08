@@ -147,8 +147,6 @@ export class App {
     if (oldTodo) {
       isDifferent = !this.areObjectsEqualAlphabetically(oldTodo, newTodo);
     }
-    // console.log(JSON.stringify(oldTodo));
-    // console.log(JSON.stringify(newTodo));
     return isDifferent;
   }
 
