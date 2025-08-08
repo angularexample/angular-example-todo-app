@@ -1,1 +1,86 @@
 <h1>{{ title }}</h1>
+<section class="my-todo-list">
+  <h2>My ToDo List</h2>
+  <table>
+    <tr>
+      <th>User Id</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Completed</th>
+    </tr>
+    @for (myToDo of myTodoList; track myToDo) {
+      <tr (click)="selectToDo(myToDo.id)">
+        <td>{{ myToDo.userId }}</td>
+        <td>{{ myToDo.id }}</td>
+        <td>{{ myToDo.title }}</td>
+        <td>{{ myToDo.completed }}</td>
+      </tr>
+    }
+  </table>
+</section>
+
+<section>
+  <h2>Add a Todo</h2>
+  <form [formGroup]="addTodoForm" (ngSubmit)=addTodo() class="my-add-todo-form">
+    <table>
+      <tr>
+        <label for="add-user-id">User Id</label>
+        <input id="add-user-id" formControlName="userId" placeholder="User Id">
+      </tr>
+      <tr>
+        <label for="add-title">Title</label>
+        <input id="add-title" type="text" formControlName="title" placeholder="Title">
+      </tr>
+      <tr>
+        <label for="add-completed">Completed</label>
+        <input id="add-completed" type="checkbox" formControlName="completed" placeholder="Completed">
+      </tr>
+      <tr>
+        <input type="submit" value="Add" [disabled]="addTodoForm.invalid">
+      </tr>
+    </table>
+  </form>
+</section>
+
+<section>
+  <h2>Delete a Todo</h2>
+  <form [formGroup]="deleteTodoForm" (ngSubmit)=deleteTodo() class="my-add-todo-form">
+    <table>
+      <tr>
+        <label for="delete-id">Id</label>
+        <input id="delete-id" formControlName="id" placeholder="Id">
+      </tr>
+      <tr>
+        <input type="submit" value="Delete" [disabled]="deleteTodoForm.invalid">
+      </tr>
+    </table>
+  </form>
+</section>
+
+<section>
+  <h2>Change a Todo</h2>
+  <p>To select a ToDo item, click on the list.</p>
+  <form [formGroup]="changeTodoForm" (ngSubmit)=changeTodo() class="my-add-todo-form">
+    <table>
+      <tr>
+        <label for="change-id">Id</label>
+        <input id="change-id" formControlName="id" placeholder="Id" readonly>
+      </tr>
+      <tr>
+        <label for="change-user-id">User Id</label>
+        <input id="change-user-id" formControlName="userId" placeholder="User Id">
+      </tr>
+      <tr>
+        <label for="change-title">Title</label>
+        <input id="change-title" type="text" formControlName="title" placeholder="Title">
+      </tr>
+      <tr>
+        <label for="change-completed">Completed</label>
+        <input id="change-completed" type="checkbox" formControlName="completed" placeholder="Completed">
+      </tr>
+      <tr>
+        <input type="submit" value="Change" [disabled]="changeTodoForm.invalid">
+      </tr>
+    </table>
+  </form>
+</section>

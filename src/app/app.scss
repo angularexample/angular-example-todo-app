@@ -1,0 +1,18 @@
+.my-add-todo-form {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-left: 10px;
+  }
+}
+
+.my-todo-list {
+  tr {
+    cursor: pointer;
+  }
+
+  tr:hover {
+    background-color: #eee;
+  }
+}
