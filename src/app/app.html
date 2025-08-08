@@ -25,7 +25,7 @@
     <table>
       <tr>
         <label for="add-user-id">User Id</label>
-        <input id="add-user-id" formControlName="userId" placeholder="User Id">
+        <input id="add-user-id" formControlName="userId" placeholder="User Id" type="number">
       </tr>
       <tr>
         <label for="add-title">Title</label>
@@ -48,7 +48,7 @@
     <table>
       <tr>
         <label for="delete-id">Id</label>
-        <input id="delete-id" formControlName="id" placeholder="Id">
+        <input id="delete-id" formControlName="id" placeholder="Id" type="number">
       </tr>
       <tr>
         <input type="submit" value="Delete" [disabled]="deleteTodoForm.invalid">
@@ -64,11 +64,11 @@
     <table>
       <tr>
         <label for="change-id">Id</label>
-        <input id="change-id" formControlName="id" placeholder="Id" readonly>
+        <input id="change-id" formControlName="id" placeholder="Id" readonly type="number">
       </tr>
       <tr>
         <label for="change-user-id">User Id</label>
-        <input id="change-user-id" formControlName="userId" placeholder="User Id">
+        <input id="change-user-id" formControlName="userId" placeholder="User Id" type="number">
       </tr>
       <tr>
         <label for="change-title">Title</label>
@@ -79,7 +79,7 @@
         <input id="change-completed" type="checkbox" formControlName="completed" placeholder="Completed">
       </tr>
       <tr>
-        <input type="submit" value="Change" [disabled]="changeTodoForm.invalid">
+        <input type="submit" value="Change" [disabled]="isChangeDisabled">
       </tr>
     </table>
   </form>
