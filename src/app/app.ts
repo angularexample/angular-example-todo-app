@@ -19,18 +19,12 @@ export interface MyTodo {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
-  changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-  httpClient: HttpClient = inject(HttpClient);
-  protected isChangeDisabled: boolean = true;
-  protected myTodoList: MyTodo[] = [];
-  private selectedTodo: MyTodo | undefined;
-  protected title = 'angular-example-todo-app';
-  private readonly urlTodos: string = 'https://jsonplaceholder.typicode.com/todos';
   protected addTodoForm: FormGroup = new FormGroup({
     userId: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
     completed: new FormControl(false)
   });
+  protected changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   protected changeTodoForm: FormGroup = new FormGroup({
     id: new FormControl('', Validators.required),
     userId: new FormControl('', Validators.required),
@@ -40,6 +34,12 @@ export class App {
   protected deleteTodoForm: FormGroup = new FormGroup({
     id: new FormControl('', Validators.required),
   });
+  protected httpClient: HttpClient = inject(HttpClient);
+  protected isChangeDisabled: boolean = true;
+  protected myTodoList: MyTodo[] = [];
+  protected title = 'angular-example-todo-app';
+  private selectedTodo: MyTodo | undefined;
+  private readonly urlTodos: string = 'https://jsonplaceholder.typicode.com/todos';
 
   constructor() {
     this.getTodoList();
