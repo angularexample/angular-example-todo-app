@@ -57,3 +57,16 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Steps Taken To Create This App
+
+### Use Angular Scaffolding to Create the App
+
+```ng new angular-example-todo-app```
+
+When prompted, select these options:
+
+Zoneless: ```y```
+
+Styles: ```SCSS```
+
