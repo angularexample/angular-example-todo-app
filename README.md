@@ -62,7 +62,7 @@ For more information on using the Angular CLI, including detailed command refere
 
 ### Use Angular Scaffolding to Create the App
 
-```ng new angular-example-todo-app```
+```ng new angular-example-todo-app --no-routing```
 
 When prompted, select these options:
 
@@ -79,71 +79,6 @@ Remove all the code except the title.
 ```html
 <h1>{{ title }}</h1>
 ```
-
-### Remove routing
-
-In the app component,
-```src/app/app.ts```,
-remove routing from the imports.
-
-Remove this:
-
-```
-import { RouterOutlet } from '@angular/router';
-```
-
-BEFORE
-
-```typescript
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
-})
-```
-
-AFTER
-```typescript
-@Component({
-  selector: 'app-root',
-  imports: [],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
-})
-```
-
-In the app config,
-```src/app/app.config.ts```,
-remove the import and the providers for routing.
-
-```typescript
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-```
-
-BEFORE
-
-```typescript
-  providers: [
-  provideBrowserGlobalErrorListeners(),
-  provideZonelessChangeDetection(),
-  provideRouter(routes)
-]
-```
-
-AFTER
-
-```typescript
-  providers: [
-  provideBrowserGlobalErrorListeners(),
-  provideZonelessChangeDetection(),
-]
-```
-
-Remove the routes file,
-```src/app/app.routes.ts```.
 
 ### Add HttpClient to the app providers
 
