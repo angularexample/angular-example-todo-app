@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Completed</th>
     </tr>
-    @for (myToDo of myTodoList; track myToDo) {
+    @for (myToDo of myTodoList; track myToDo.id) {
       <tr (click)="selectToDo(myToDo.id)">
         <td>{{ myToDo.id }}</td>
         <td>{{ myToDo.userId }}</td>
