@@ -21,7 +21,7 @@
 
 <section>
   <h2>Add a Todo</h2>
-  <form [formGroup]="addTodoForm" (ngSubmit)=addTodo() class="my-add-todo-form">
+  <form [formGroup]="addTodoForm" (ngSubmit)="addTodo()" class="my-add-todo-form">
     <table>
       <tr>
         <label for="add-user-id">User Id</label>
